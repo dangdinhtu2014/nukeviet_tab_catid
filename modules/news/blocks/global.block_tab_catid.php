@@ -222,9 +222,10 @@ if( ! nv_function_exists( 'nv_tab_catid' ) )
 					$result = $db->query( 'SELECT id, catid, title, alias, homeimgfile, homeimgthumb, homeimgalt, publtime FROM ' . NV_PREFIXLANG . '_' . $mod_data . '_rows ' . $where . ' ORDER BY publtime DESC LIMIT ' . intval( $numrow ) );
 
 					$data = array();
-
+					
 					while( $l = $result->fetch() )
 					{
+ 
 						$l['title_cut'] = nv_clean60( $l['title'], $block_config['config_numcut'] );
 						$l['link'] = NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module . '&amp;' . NV_OP_VARIABLE . '=' . $module_array_cat[$l['catid']]['alias'] . '/' . $l['alias'] . '-' . $l['id'] . $global_config['rewrite_exturl'];
 						if( $l['homeimgthumb'] == 1 )
@@ -248,6 +249,7 @@ if( ! nv_function_exists( 'nv_tab_catid' ) )
 							$l['thumb'] = '';
 						}
 						$data[] = $l;
+		 
 
 					}
 					$data_content[$_catid] = array(
@@ -272,14 +274,19 @@ if( ! nv_function_exists( 'nv_tab_catid' ) )
 					$xtpl->assign( 'NUM', $a );
 					$xtpl->assign( 'CAT', $data );
 					$xtpl->parse( 'main.loopcat' );
-
+					$b = 1;
 					foreach( $data['content'] as $loop )
 					{
+						if( $b % 3 == 0 )
+						{
+							$xtpl->parse( 'main.loop.loopcontent.clear' );
+						}
 						$loop['style'] = ( $a == 0 ) ? 'display: block' : 'display: none';
 						$xtpl->assign( 'LOOP', $loop );
 						$xtpl->parse( 'main.loop.loopcontent' );
-
+						++$b;
 					}
+					
 					$xtpl->parse( 'main.loop' );
 					++$a;
 				}

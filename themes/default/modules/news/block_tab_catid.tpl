@@ -16,11 +16,12 @@
 		<div class="itemblock">
             <a class="item" href="{LOOP.link}"><img class="itemimg" src="{LOOP.thumb}" alt="{LOOP.title}" />{LOOP.title_cut}</a>
         </div>
+		<!-- BEGIN: clear --><div class="clear">&nbsp;</div><!-- END: clear -->
 		<!-- END: loopcontent -->
     </div>
 	 <!-- END: loop --> 
 </div>
-<div class="clear"></div>
+<div style="height: 10px;clear:both"></div>
 <script type="text/javascript">
     changeTab('tab{TAB_NAME}', '0', '{TAB_TOTAL}');
 </script>
