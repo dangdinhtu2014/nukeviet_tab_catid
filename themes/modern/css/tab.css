@@ -1,0 +1,6 @@
+.boxtab {display: block; width: 598px; height: 35px; margin: 0px; padding: 0px; list-style: none; background: #fff url(../images/bgtab.gif) repeat-x; border-top: 1px solid #D9DDE5; border-right: 1px solid #D9DDE5; border-left: 1px solid #D9DDE5; overflow: hidden; float: left;}
+.boxtab li {color:#414141; font-weight: bold; background: #F1F3F6 url(../images/bgtab.gif) repeat-x; border-right: 1px solid #D9DDE5; float: left;}
+.boxtab li span {display: inline-block; height: 35px; line-height: 35px; padding: 0px 8px; cursor: pointer;}
+.tabselected {color:#15527E; background: #fff;}
+.tabselected span {color:#15527E; background: #fff;}
+.boxtabcontent {border: 1px solid #D9DDE5; border-top: none; width:588px; padding: 10px; padding-top: 0px; padding-left: 0px;}
