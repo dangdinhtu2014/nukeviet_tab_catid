@@ -14,13 +14,13 @@
 	<div class="tabcontent" id="tab{TAB_NAME}{NUM}Content" style="{LOOP.style}">
         <!-- BEGIN: loopcontent -->
 		<div class="itemblock">
-            <a class="item" href="{LOOP.link}"><img class="itemimg" src="{LOOP.thumb}" alt="{LOOP.title}" />{LOOP.title}</a>
+            <a class="item" href="{LOOP.link}"><img class="itemimg" src="{LOOP.thumb}" alt="{LOOP.title}" />{LOOP.title_cut}</a>
         </div>
 		<!-- END: loopcontent -->
     </div>
 	 <!-- END: loop --> 
 </div>
-
+<div class="clear"></div>
 <script type="text/javascript">
     changeTab('tab{TAB_NAME}', '0', '{TAB_TOTAL}');
 </script>

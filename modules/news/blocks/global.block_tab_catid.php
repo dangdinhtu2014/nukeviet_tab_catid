@@ -157,6 +157,7 @@ if( ! nv_function_exists( 'nv_tab_catid' ) )
 		$return['config'] = array();
 		$return['config']['config_catid'] = $nv_Request->get_int( 'config_catid', 'post', 0 );
 		$return['config']['config_numrow'] = $nv_Request->get_int( 'config_numrow', 'post', 0 );
+		$return['config']['config_numcut'] = $nv_Request->get_int( 'config_numcut', 'post', 0 );
 
 		return $return;
 	}
@@ -197,7 +198,7 @@ if( ! nv_function_exists( 'nv_tab_catid' ) )
 
 			$data_content = array();
 
-			$cache_file = NV_LANG_DATA . '_' . md5( $array_cat ) . '_' . NV_CACHE_PREFIX . '.cache';
+			$cache_file = NV_LANG_DATA . '_' . md5( implode( ',', $array_cat ) ) . '_' . NV_CACHE_PREFIX . '.cache';
 
 			if( ( $cache = nv_get_cache( $module, $cache_file ) ) != false )
 			{
@@ -224,6 +225,7 @@ if( ! nv_function_exists( 'nv_tab_catid' ) )
 
 					while( $l = $result->fetch() )
 					{
+						$l['title_cut'] = nv_clean60( $l['title'], $block_config['config_numcut'] );
 						$l['link'] = NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module . '&amp;' . NV_OP_VARIABLE . '=' . $module_array_cat[$l['catid']]['alias'] . '/' . $l['alias'] . '-' . $l['id'] . $global_config['rewrite_exturl'];
 						if( $l['homeimgthumb'] == 1 )
 						{
